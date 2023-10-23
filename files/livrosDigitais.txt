@@ -1,0 +1,2 @@
+12983;Estratégia de UX: Técnicas de Estratégia de Produto Para Criar Soluções Digitais;A estratégia de UX (User Experience, ou Experiência de Usuário)...;true;81;312;400;epub
+52348;Storytelling no Design de Produto: Definindo, Projetando e Vendendo Produtos Multidispositivos;Com a grande variedade de dispositivos,...;false;96;384;427;mobi
