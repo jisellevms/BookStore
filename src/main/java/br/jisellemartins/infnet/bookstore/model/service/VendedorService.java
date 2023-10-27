@@ -1,21 +1,22 @@
 package br.jisellemartins.infnet.bookstore.model.service;
 
 import br.jisellemartins.infnet.bookstore.model.domain.Vendedor;
+import br.jisellemartins.infnet.bookstore.model.repository.VendedorRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
 @Service
 public class VendedorService {
-    private Map<String, Vendedor> mapaVendedor = new HashMap<String, Vendedor>();
+    @Autowired
+    private VendedorRepository vendedorRepository;
 
     public void incluirVendedor(Vendedor vendedor) {
-        mapaVendedor.put(vendedor.getCpf(), vendedor);
+        vendedorRepository.save(vendedor);
     }
 
     public Collection<Vendedor> obterListaVendedores() {
-        return mapaVendedor.values();
+        return (Collection<Vendedor>) vendedorRepository.findAll();
     }
 }

@@ -1,14 +1,24 @@
 package br.jisellemartins.infnet.bookstore.model.domain;
 
+import javax.persistence.*;
+import java.util.List;
+
+@Entity
+@Table(name = "TVendedor")
 public class Vendedor {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private String nome;
     private String cpf;
     private String email;
+    @Transient
+    private List<Produto> produtos;
 
 
     @Override
     public String toString() {
-        return String.format("%s - %s - %s", nome,cpf,email);
+        return String.format("%s - %s - %s", nome, cpf, email);
     }
 
     public String getNome() {
@@ -34,4 +44,5 @@ public class Vendedor {
     public void setEmail(String email) {
         this.email = email;
     }
+
 }
