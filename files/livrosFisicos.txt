@@ -1,2 +1,2 @@
-79478;Padrões de Projetos: Soluções Reutilizáveis de Software Orientados a Objetos;Catálogo de soluções simples e sucintas para...;true;148;368;270;Capa comum
-96301;Design Centrado no Usuário;Design centrado no usuário apresenta uma visão única...;false;55;184;203;Capa dura
+79478;Padrões de Projetos: Soluções Reutilizáveis de Software Orientados a Objetos;Catálogo de soluções simples e sucintas para...;true;148;368;270;Capa comum;2
+96301;Design Centrado no Usuário;Design centrado no usuário apresenta uma visão única...;false;55;184;203;Capa dura;3

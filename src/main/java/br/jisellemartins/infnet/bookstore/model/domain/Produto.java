@@ -1,16 +1,36 @@
 package br.jisellemartins.infnet.bookstore.model.domain;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "TProduto")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Produto {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private int codigo;
     private String descricao;
     private float preco;
     private boolean estoque;
     private String titulo;
     private int qtdPaginas;
+    @ManyToOne
+    @JoinColumn(name = "idVendedor")
+    private Vendedor vendedor;
+
 
     @Override
     public String toString() {
-        return String.format("%d - %s - %s - R$ %.2f - Estoque: %s  - %d páginas",codigo, titulo, descricao, preco, estoque? "Sim":"Não", qtdPaginas);
+        return String.format("%d - %d - %s - %s - R$ %.2f - Estoque: %s  - %d páginas - %d id vendedor", id, codigo, titulo, descricao, preco, estoque ? "Sim" : "Não", qtdPaginas, vendedor.getId());
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getDescricao() {
@@ -59,5 +79,13 @@ public class Produto {
 
     public void setQtdPaginas(int qtdPaginas) {
         this.qtdPaginas = qtdPaginas;
+    }
+
+    public Vendedor getVendedor() {
+        return vendedor;
+    }
+
+    public void setVendedor(Vendedor vendedor) {
+        this.vendedor = vendedor;
     }
 }

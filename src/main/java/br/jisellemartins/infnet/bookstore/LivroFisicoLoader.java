@@ -1,6 +1,7 @@
 package br.jisellemartins.infnet.bookstore;
 
 import br.jisellemartins.infnet.bookstore.model.domain.LivroFisico;
+import br.jisellemartins.infnet.bookstore.model.domain.Vendedor;
 import br.jisellemartins.infnet.bookstore.model.service.LivroFisicoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -25,6 +26,7 @@ public class LivroFisicoLoader implements ApplicationRunner {
         String linha = leitura.readLine();
 
         String[] campos = null;
+        Vendedor vendedor = new Vendedor();
 
         while (linha != null) {
             campos = linha.split(";");
@@ -37,6 +39,9 @@ public class LivroFisicoLoader implements ApplicationRunner {
             livroFisico.setQtdPaginas(Integer.parseInt(campos[5]));
             livroFisico.setPeso(Float.parseFloat(campos[6]));
             livroFisico.setTipoCapa(campos[7]);
+
+            vendedor.setId(Integer.valueOf(campos[8]));
+            livroFisico.setVendedor(vendedor);
 
             livroFisicoService.incluirLivroFisico(livroFisico);
 

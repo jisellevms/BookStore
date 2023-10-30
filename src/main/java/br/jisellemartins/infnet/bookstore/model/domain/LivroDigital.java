@@ -1,5 +1,10 @@
 package br.jisellemartins.infnet.bookstore.model.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "TLivroDigital")
 public class LivroDigital extends Produto {
     private int tamanho;
     private String formato;

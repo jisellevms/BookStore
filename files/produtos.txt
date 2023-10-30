@@ -1,4 +1,4 @@
-34234;Código limpo: habilidades práticas do Agile software;Mesmo um código ruim pode funcionar...;true;101;425;300;Capa comum;F
-23454;Arquitetura limpa: o guia do artesão para estrutura e design de software;As regras universais de arquitetura de software aumentam...;true;77;432;578;epub;D
-45665;Domain-driven design: atacando as complexidades no coração do software;A comunidade de desenvolvimento de softwares reconhece...;false;100;528;500;Capa dura;F
-86785;Refatoração: Aperfeiçoando o Design de Códigos Existentes;Por mais de vinte anos, programadores experientes no mundo...;true;107;456;630;pdf;D
+34234;Código limpo: habilidades práticas do Agile software;Mesmo um código ruim pode funcionar...;true;101;425;300;Capa comum;F;1
+23454;Arquitetura limpa: o guia do artesão para estrutura e design de software;As regras universais de arquitetura de software aumentam...;true;77;432;578;epub;D;2
+45665;Domain-driven design: atacando as complexidades no coração do software;A comunidade de desenvolvimento de softwares reconhece...;false;100;528;500;Capa dura;F;3
+86785;Refatoração: Aperfeiçoando o Design de Códigos Existentes;Por mais de vinte anos, programadores experientes no mundo...;true;107;456;630;pdf;D;1

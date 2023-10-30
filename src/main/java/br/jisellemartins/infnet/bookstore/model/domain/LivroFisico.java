@@ -1,5 +1,10 @@
 package br.jisellemartins.infnet.bookstore.model.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "TLivroFisico")
 public class LivroFisico extends Produto{
     private float peso;
     private String tipoCapa;

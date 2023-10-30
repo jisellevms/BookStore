@@ -5,6 +5,7 @@ import br.jisellemartins.infnet.bookstore.model.domain.LivroFisico;
 import br.jisellemartins.infnet.bookstore.model.domain.Produto;
 import br.jisellemartins.infnet.bookstore.model.domain.Vendedor;
 import br.jisellemartins.infnet.bookstore.model.service.ProdutoService;
+import br.jisellemartins.infnet.bookstore.model.service.VendedorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -18,6 +19,9 @@ import java.io.FileReader;
 public class ProdutoLoader implements ApplicationRunner {
     @Autowired
     private ProdutoService produtoService;
+    @Autowired
+    private VendedorService vendedorService;
+
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -27,7 +31,7 @@ public class ProdutoLoader implements ApplicationRunner {
         String linha = leitura.readLine();
 
         String[] campos = null;
-
+        Vendedor vendedor = new Vendedor();
         while (linha != null) {
 
             campos = linha.split(";");
@@ -45,6 +49,10 @@ public class ProdutoLoader implements ApplicationRunner {
                     livroFisico.setPeso(Float.parseFloat(campos[6]));
                     livroFisico.setTipoCapa(campos[7]);
 
+
+                    vendedor.setId(Integer.valueOf(campos[9]));
+                    livroFisico.setVendedor(vendedor);
+
                     produtoService.incluirProduto(livroFisico);
                     break;
 
@@ -58,6 +66,10 @@ public class ProdutoLoader implements ApplicationRunner {
                     livroDigital.setQtdPaginas(Integer.parseInt(campos[5]));
                     livroDigital.setTamanho(Integer.parseInt((campos[6])));
                     livroDigital.setFormato(campos[7]);
+
+                    vendedor.setId(Integer.valueOf(campos[9]));
+                    livroDigital.setVendedor(vendedor);
+
                     produtoService.incluirProduto(livroDigital);
                     break;
 
@@ -71,6 +83,14 @@ public class ProdutoLoader implements ApplicationRunner {
         for (Produto produto : produtoService.obterListaProdutos()) {
             System.out.println("[Produto] " + produto);
         }
+
+        for (Vendedor v: vendedorService.obterListaVendedores()){
+            System.out.println("Vendedor: " + v.getId() +" - " + v.getNome() + "\n");
+            for (Produto produto : produtoService.obterProdutosPorVendedor(v)){
+                System.out.println("[Produto] " + produto + "\n");
+            }
+        }
+
         leitura.close();
     }
 }

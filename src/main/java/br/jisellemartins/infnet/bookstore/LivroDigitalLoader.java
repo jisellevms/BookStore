@@ -1,6 +1,7 @@
 package br.jisellemartins.infnet.bookstore;
 
 import br.jisellemartins.infnet.bookstore.model.domain.LivroDigital;
+import br.jisellemartins.infnet.bookstore.model.domain.Vendedor;
 import br.jisellemartins.infnet.bookstore.model.service.LivroDigitalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -26,7 +27,7 @@ public class LivroDigitalLoader implements ApplicationRunner {
         String linha = leitura.readLine();
 
         String[] campos = null;
-
+        Vendedor vendedor = new Vendedor();
         while (linha != null) {
             campos = linha.split(";");
 
@@ -39,6 +40,9 @@ public class LivroDigitalLoader implements ApplicationRunner {
             livroDigital.setQtdPaginas(Integer.parseInt(campos[5]));
             livroDigital.setTamanho(Integer.parseInt((campos[6])));
             livroDigital.setFormato(campos[7]);
+
+            vendedor.setId(Integer.valueOf(campos[8]));
+            livroDigital.setVendedor(vendedor);
 
             livroDigitalService.incluirLivroDigital(livroDigital);
 
