@@ -18,8 +18,14 @@ public class LivroDigitalService {
     public void incluirLivroDigital(LivroDigital livroDigital) {
         livroDigitalRepository.save(livroDigital);
     }
+    public void excluirLivroDigital(Integer id) {
+        livroDigitalRepository.deleteById(id);
+    }
 
     public Collection<LivroDigital> obterListaLivrosDigitais() {
         return (Collection<LivroDigital>) livroDigitalRepository.findAll();
+    }
+    public long obterQuantidade(){
+        return livroDigitalRepository.count();
     }
 }

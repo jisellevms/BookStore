@@ -1,0 +1,5 @@
+nov 08, 2023 10:51:08 PM br.jisellemartins.infnet.bookstore.FileLogger logException
+GRAVE: [VENDEDOR] null - A - 012.852.790-00 - alisson@gmail.com - 0 - Validation failed for classes [br.jisellemartins.infnet.bookstore.model.domain.Vendedor] during persist time for groups [javax.validation.groups.Default, ]
+List of constraint violations:[
+	ConstraintViolationImpl{interpolatedMessage='tamanho deve ser entre 2 e 50', propertyPath=nome, rootBeanClass=class br.jisellemartins.infnet.bookstore.model.domain.Vendedor, messageTemplate='{javax.validation.constraints.Size.message}'}
+]

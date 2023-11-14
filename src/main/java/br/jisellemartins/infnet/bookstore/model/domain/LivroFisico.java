@@ -1,5 +1,6 @@
 package br.jisellemartins.infnet.bookstore.model.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -7,6 +8,7 @@ import javax.persistence.Table;
 @Table(name = "TLivroFisico")
 public class LivroFisico extends Produto{
     private float peso;
+    @Column(columnDefinition = "VARCHAR(255) DEFAULT 'Capa Comum'")
     private String tipoCapa;
 
 

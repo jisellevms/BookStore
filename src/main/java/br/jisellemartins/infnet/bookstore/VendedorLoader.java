@@ -1,5 +1,6 @@
 package br.jisellemartins.infnet.bookstore;
 
+import br.jisellemartins.infnet.bookstore.model.domain.Endereco;
 import br.jisellemartins.infnet.bookstore.model.domain.Vendedor;
 import br.jisellemartins.infnet.bookstore.model.service.VendedorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import javax.validation.ConstraintViolationException;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
@@ -36,8 +38,15 @@ public class VendedorLoader implements ApplicationRunner {
             vendedor.setNome(campos[0]);
             vendedor.setCpf(campos[1]);
             vendedor.setEmail(campos[2]);
+            vendedor.setEndereco(new Endereco(campos[3]));
 
-            vendedorService.incluirVendedor(vendedor);
+
+            try {
+                vendedorService.incluirVendedor(vendedor);
+            } catch (ConstraintViolationException exception) {
+                FileLogger.logException("[VENDEDOR] " + vendedor + " - " + exception.getMessage());
+            }
+
 
             linha = leitura.readLine();
         }

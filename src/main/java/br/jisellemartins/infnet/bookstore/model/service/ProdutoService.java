@@ -14,10 +14,13 @@ import java.util.Map;
 public class ProdutoService {
     @Autowired
     private ProdutoRepository produtoRepository;
-    private Map<Integer, Produto> mapaProduto = new HashMap<Integer, Produto>();
 
     public void incluirProduto(Produto produto) {
         produtoRepository.save(produto);
+    }
+
+    public void excluirProduto(Integer id) {
+        produtoRepository.deleteById(id);
     }
 
     public Collection<Produto> obterListaProdutos() {
@@ -26,5 +29,8 @@ public class ProdutoService {
 
     public Collection<Produto> obterProdutosPorVendedor(Vendedor vendedor) {
         return (Collection<Produto>) produtoRepository.obterProdutosPorVendedor(vendedor.getId());
+    }
+    public long obterQuantidade(){
+        return produtoRepository.count();
     }
 }

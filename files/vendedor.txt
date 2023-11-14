@@ -1,4 +1,4 @@
-Renato Cunha;15156394019;renato@gmail.com
-Gilberto Santos;61800632061;gilberto@gmail.com
-Alisson Fontana;01285279000;alisson@gmail.com
-Lucas Alves;99753792069;lucas@gmail.com
+Renato Cunha;151.563.940-19;renato@gmail.com;60332620
+Gilberto Santos;618.006.320-61;gilberto@gmail.com;60332620
+Alisson Fontana;012.852.790-00;alisson@gmail.com;60332620
+Lucas Alves;997.537.920-69;lucas@gmail.com;60332620

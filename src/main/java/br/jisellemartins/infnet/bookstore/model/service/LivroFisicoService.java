@@ -16,7 +16,15 @@ public class LivroFisicoService {
         livroFisicoRepository.save(livroFisico);
     }
 
+    public void excluirLivroFisico(Integer id) {
+        livroFisicoRepository.deleteById(id);
+    }
+
     public Collection<LivroFisico> obterListaLivrosFisicos() {
         return (Collection<LivroFisico>) livroFisicoRepository.findAll();
+    }
+
+    public long obterQuantidade(){
+        return livroFisicoRepository.count();
     }
 }

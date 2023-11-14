@@ -1,17 +1,22 @@
 package br.jisellemartins.infnet.bookstore.model.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.PositiveOrZero;
 
 @Entity
-@Table(name = "TProduto")
+@Table(name = "TProduto", uniqueConstraints = {@UniqueConstraint(columnNames = {"codigo"})})
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @PositiveOrZero
     private int codigo;
     private String descricao;
+    @Positive
     private float preco;
+    @Column(columnDefinition = "boolean default false")
     private boolean estoque;
     private String titulo;
     private int qtdPaginas;
