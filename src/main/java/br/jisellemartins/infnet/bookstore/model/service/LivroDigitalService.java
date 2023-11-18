@@ -1,6 +1,7 @@
 package br.jisellemartins.infnet.bookstore.model.service;
 
 import br.jisellemartins.infnet.bookstore.model.domain.LivroDigital;
+import br.jisellemartins.infnet.bookstore.model.domain.LivroFisico;
 import br.jisellemartins.infnet.bookstore.model.domain.Vendedor;
 import br.jisellemartins.infnet.bookstore.model.repository.LivroDigitalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,10 @@ import java.util.Map;
 public class LivroDigitalService {
     @Autowired
     private LivroDigitalRepository livroDigitalRepository;
+
+    public LivroDigital pesquisar(Integer codigo) {
+        return livroDigitalRepository.findByCodigo(codigo);
+    }
 
     public void incluirLivroDigital(LivroDigital livroDigital) {
         livroDigitalRepository.save(livroDigital);

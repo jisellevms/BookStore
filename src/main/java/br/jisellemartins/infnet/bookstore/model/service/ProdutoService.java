@@ -15,6 +15,10 @@ public class ProdutoService {
     @Autowired
     private ProdutoRepository produtoRepository;
 
+    public Produto pesquisar(Integer codigo) {
+        return produtoRepository.findByCodigo(codigo);
+    }
+
     public void incluirProduto(Produto produto) {
         produtoRepository.save(produto);
     }

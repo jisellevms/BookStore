@@ -1,9 +1,6 @@
 package br.jisellemartins.infnet.bookstore.controller;
 
-import br.jisellemartins.infnet.bookstore.model.service.LivroDigitalService;
-import br.jisellemartins.infnet.bookstore.model.service.LivroFisicoService;
-import br.jisellemartins.infnet.bookstore.model.service.ProdutoService;
-import br.jisellemartins.infnet.bookstore.model.service.VendedorService;
+import br.jisellemartins.infnet.bookstore.model.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,9 +17,13 @@ public class AppController {
     private LivroFisicoService livroFisicoService;
     @Autowired
     private LivroDigitalService livroDigitalService;
+    @Autowired
+    private InformacaoService informacaoService;
 
     @GetMapping(value = "/")
     public String showHome(Model model) {
+
+        model.addAttribute("informacoes", informacaoService.obterInformacao());
         model.addAttribute("qtdVendedor", vendedorService.obterQuantidade());
         model.addAttribute("qtdProdutos", produtoService.obterQuantidade());
         model.addAttribute("qtdLivroFisico", livroFisicoService.obterQuantidade());

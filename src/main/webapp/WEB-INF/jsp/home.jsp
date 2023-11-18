@@ -31,6 +31,12 @@
                 <a class="nav-link" href="/livrodigital/lista">Livros Digitais</a>
             </li>
         </ul>
+        <c:if test="${not empty listagem}">
+            <form class="d-flex" action="/${rota}/pesquisar"><input class="form-control me-2" type="text"
+                                                                    name="campoBusca" placeholder="Search">
+                <button class="btn btn-primary" type="submit">Search</button>
+            </form>
+        </c:if>
     </div>
 </nav>
 
@@ -53,11 +59,51 @@
             <c:forEach var="item" items="${listagem}">
                 <tr>
                     <td class="table-warning">${item}</td>
-                    <td class="table-warning"><a class="link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="/${rota}/${item.id}/excluir">excluir</a></td>
+                    <td class="table-warning"><a
+                            class="link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                            href="/${rota}/${item.id}/excluir">excluir</a></td>
                 </tr>
             </c:forEach>
             </tbody>
         </table>
+    </c:if>
+    <hr>
+    <c:if test="${empty listagem}">
+        <form action="/informacao/incluir" method="post">
+            <div class="row">
+                <div class="col"><input type="text" class="form-control" placeholder="Entre com o campo" name="campo">
+                </div>
+                <div class="col"><input type="text" class="form-control" placeholder="Entre com a descrição"
+                                        name="descricao"></div>
+                <div class="col">
+                    <button class="btn btn-primary" type="submit">Cadastrar</button>
+                </div>
+            </div>
+        </form>
+        <hr>
+        <c:if test="${not empty informacoes}">
+            <table class="table table-hover">
+                <thead class="table-dark">
+                <tr>
+                    <th>Informações:</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach var="item" items="${informacoes}">
+                    <tr>
+                        <td class="table-success">${item}</td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </c:if>
+    </c:if>
+    <c:if test="${not empty objeto}">
+        <hr>
+        <div class="alert alert-success">
+            <strong>Sucesso!</strong>
+                ${objeto}
+        </div>
     </c:if>
 
 </div>

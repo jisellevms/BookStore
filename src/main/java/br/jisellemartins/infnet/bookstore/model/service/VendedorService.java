@@ -5,6 +5,7 @@ import br.jisellemartins.infnet.bookstore.model.domain.Endereco;
 import br.jisellemartins.infnet.bookstore.model.domain.Vendedor;
 import br.jisellemartins.infnet.bookstore.model.repository.VendedorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -15,6 +16,11 @@ public class VendedorService {
     private VendedorRepository vendedorRepository;
     @Autowired
     private IEnderecoClient iEnderecoClient;
+
+
+    public Vendedor pesquisar(String cpf) {
+        return vendedorRepository.findByCpf(cpf);
+    }
 
     public void incluirVendedor(Vendedor vendedor) {
         Endereco endereco = iEnderecoClient.buscarCep(vendedor.getEndereco().getCep());
@@ -27,7 +33,7 @@ public class VendedorService {
     }
 
     public Collection<Vendedor> obterListaVendedores() {
-        return (Collection<Vendedor>) vendedorRepository.findAll();
+        return (Collection<Vendedor>) vendedorRepository.findAll(Sort.by(Sort.Direction.ASC, "nome"));
     }
 
     public long obterQuantidade() {

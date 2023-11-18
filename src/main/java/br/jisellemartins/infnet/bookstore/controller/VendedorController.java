@@ -1,5 +1,6 @@
 package br.jisellemartins.infnet.bookstore.controller;
 
+import br.jisellemartins.infnet.bookstore.model.domain.Vendedor;
 import br.jisellemartins.infnet.bookstore.model.service.VendedorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,17 @@ public class VendedorController {
     private AppController appController;
     @Autowired
     private VendedorService vendedorService;
+
+    @GetMapping(value = "/vendedor/pesquisar")
+    public String pesquisar(Model model, String campoBusca) {
+
+        Vendedor vendedor = vendedorService.pesquisar(campoBusca);
+        if (vendedor != null){
+            model.addAttribute("objeto", vendedor);
+            return appController.showHome(model);
+        }
+        return "redirect:/vendedor/lista";
+    }
 
     @GetMapping(value = "/vendedor/{id}/excluir")
     public String excluir(@PathVariable Integer id) {

@@ -1,5 +1,6 @@
 package br.jisellemartins.infnet.bookstore.controller;
 
+import br.jisellemartins.infnet.bookstore.model.domain.LivroFisico;
 import br.jisellemartins.infnet.bookstore.model.service.LivroFisicoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,17 @@ public class LivroFisicoController {
     private AppController appController;
     @Autowired
     private LivroFisicoService livroFisicoService;
+
+    @GetMapping(value = "/livrofisico/pesquisar")
+    public String pesquisar(Model model, String campoBusca) {
+
+        LivroFisico livroFisico = livroFisicoService.pesquisar(Integer.valueOf(campoBusca));
+        if (livroFisico != null){
+            model.addAttribute("objeto", livroFisico);
+            return appController.showHome(model);
+        }
+        return "redirect:/livrofisico/lista";
+    }
 
     @GetMapping(value = "/livrofisico/{id}/excluir")
     public String excluir(@PathVariable Integer id) {
