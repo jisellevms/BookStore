@@ -15,10 +15,17 @@
 
 ### Passo a Passo para executar o projeto e a API
 
-<p>Lembrando que o projeto e a API precisam ser executados juntos para funcionar corretamente.</p>
+<ins>Lembrando que o projeto e a API precisam ser executados juntos para funcionar corretamente.</ins>
+
 
 [BookStore API](https://github.com/jisellevms/BookStoreAPI)
 <p>Faça o clone dos dois projetos, a BookStoreAPI e BookStore, após isso ao fazer todas as importações necessárias, será necessário rodar primeiro o projeto da API, que roda na porta 8081, e em paralelo, após a execução com sucesso, será necessário roda o projeto BookStore que roda na porta 8080. </p>
 
 #### O resultado será esse:
+
+<div align="center">
+<img src="files/print1.png" alt="Lojinha Virtual" width="530">
+  &nbsp; &nbsp;
+<img src="files/print2.png" alt="Lojinha Virtual" width="450">
+</div>
 
